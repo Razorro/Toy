@@ -1,4 +1,4 @@
-#linux_qq
+#linux_chat
 运行于linux上的命令行即时通讯程序<br>
 
 ###编译运行

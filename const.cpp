@@ -2,7 +2,7 @@
 
 namespace CONST
 {
-	/* message types */
+	/* 消息类型 */
 	char MSG_TYPE_REGIST[]  = "regist";
 	char MSG_TYPE_LOGIN[]   = "login";
 	char MSG_TYPE_LOGOUT[]  = "logout";
@@ -21,7 +21,7 @@ namespace CONST
 	char MSG_TYPE_ADDOK[]	   = "addok";
 	char MSG_TYPE_ADDNO[]      = "addno";
 
-	/* user request types */
+	/* 用户请求类型 */
 	char USER_REQUEST_TYPE_MSG[] = "to";
 	char USER_REQUEST_TYPE_FTO[] = "fto";
 	char USER_REQUEST_TYPE_FOK[] = "fok";
@@ -31,16 +31,16 @@ namespace CONST
 	char USER_REQUEST_TYPE_ADDOK[]      = "addok";
 	char USER_REQUEST_TYPE_ADDNO[]      = "addno";
 
-	/* file transfer type */
+	/* 文件传输类型 */
 	char FILE_TYPE_DIR[] = "dir";
 	char FILE_TYPE_FB[]  = "file_b";
 	char FILE_TYPE_FI[]  = "file_i";
 	char FILE_TYPE_FE[]  = "file_e";
 
-	/* receiving dir for file transfering */
+	/* 接收文件目录 */
 	char RECEIVE_DIR[] = "./data/";
 
-	/* registed user file */
+	/* 注册用户文件 */
 	char REGISTED_FILE[] = "registed";
 	char FRIENDSHIP_FILE[] = "friendship";
 };

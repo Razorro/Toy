@@ -42,16 +42,12 @@ int Util::make_socket_unblocking(int sockfd) {
 	return 0;
 }
 
-void Util::create_event(epoll_event* pev, int fd, uint32_t events) {
-	(pev->data).fd = fd;
-	pev->events = events;
-}
-
 int Util::update_event(int epoll_fd, int sock_fd, uint32_t events)
 {
 	epoll_event ev;
-	create_event(&ev, sock_fd, events);
-
+	ev.data.fd=sock_fd;
+	ev.events=events;
+	
 	if ( epoll_ctl(epoll_fd, EPOLL_CTL_MOD, sock_fd, &ev) < 0)
 		return -1;
 	return 0;

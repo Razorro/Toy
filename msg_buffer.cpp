@@ -1,10 +1,10 @@
 #include	"msg_buffer.h"
 
-Msg_buffer::Msg_buffer(int sock_fd, int queue_size, int n_byte_of_msg_len)
+Msg_buffer::Msg_buffer(int sock_fd, int queue_size)
 {
-	_sock_fd 			= sock_fd;
+	_sock_fd 		= sock_fd;
 	_queue_size 		= queue_size;
-	_n_byte_of_msg_len 	= n_byte_of_msg_len;
+	_n_byte_of_msg_len 	= 4;
 
 	_read_queue = (char*) malloc(queue_size);
 	_r_len 	= queue_size;
@@ -64,14 +64,14 @@ int Msg_buffer::read_all()
 
 int Msg_buffer::pop_a_msg(char* msg_buff)
 {
-	/* get message length */
 	int msg_len;
 	if ( (msg_len = get_msg_len()) < 0)
 		return -1;
 	
-	/* copy the message to msg_buff */
+	/* message length */
 	int n_byte_rest = _r_tail - (_r_head+_n_byte_of_msg_len);
 
+	// If can't access the entire message, return -1
 	if (msg_len > n_byte_rest)
 		return -1;
 
@@ -175,6 +175,7 @@ void Msg_buffer::set_msg_len(int msg_len)
 
 void Msg_buffer::reset_queue(char* q, int & head, int & tail)
 {
+	// that costs too much
 	memmove(q, q+head, tail-head);
 	tail = tail - head;
 	head = 0;

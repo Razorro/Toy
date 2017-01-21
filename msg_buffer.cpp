@@ -85,14 +85,10 @@ int Msg_buffer::pop_a_msg(char* msg_buff)
 
 int Msg_buffer::push_a_msg(char* msg_buff, int msg_len)
 {
-	pthread_mutex_lock(& _w_mutex);
-
 	if (msg_len < 0)
-	{
-		pthread_mutex_unlock(& _w_mutex);
 		return -1;
-	}
-
+	
+	pthread_mutex_lock(& _w_mutex);
 	if (_w_tail+_n_byte_of_msg_len+msg_len > _w_len)
 	{
 		_write_queue = (char*) realloc(_write_queue, _w_len*2);
